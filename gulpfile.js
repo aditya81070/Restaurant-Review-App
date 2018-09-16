@@ -15,7 +15,6 @@ gulp.task('styles', () => {
     browsers: ['last 3 versions']
   }))
     .pipe(gulp.dest('./dist/css'))
-    .pipe(browserSync.stream())
 })
 
 gulp.task('scripts', () => {
