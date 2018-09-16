@@ -145,10 +145,12 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
-  const ul = document.getElementById('restaurants-list')
+  const row = document.getElementById('restaurants-list')
+  const sampleRow = document.createDocumentFragment('div')
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant))
+    sampleRow.append(createRestaurantHTML(restaurant))
   })
+  row.append(sampleRow)
   addMarkersToMap()
 }
 
@@ -156,31 +158,35 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = (restaurant) => {
-  const li = document.createElement('li')
-
+  const div = document.createElement('div')
+  const info = document.createElement('div')
+  div.className='col-lg-3 col-md-4 col-sm-6 restaurant mx-1 py-2 my-2'
+  info.className = 'px-2 py-2 mt-1'
   const image = document.createElement('img')
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img img-fluid img-thumbnail'
   image.src = DBHelper.imageUrlForRestaurant(restaurant)
-  li.append(image)
+  div.append(image)
 
   const name = document.createElement('h1')
   name.innerHTML = restaurant.name
-  li.append(name)
+  name.className='restaurant-name'
+  info.append(name)
 
   const neighborhood = document.createElement('p')
   neighborhood.innerHTML = restaurant.neighborhood
-  li.append(neighborhood)
+  info.append(neighborhood)
 
   const address = document.createElement('p')
-  address.innerHTML = restaurant.address
-  li.append(address)
+  address.innerHTML ='<strong>Address: </strong>'+ restaurant.address
+  info.append(address)
 
   const more = document.createElement('a')
   more.innerHTML = 'View Details'
+  more.className= 'btn view-more'
   more.href = DBHelper.urlForRestaurant(restaurant)
-  li.append(more)
-
-  return li
+  info.append(more)
+  div.append(info)
+  return div
 }
 
 /**

@@ -11,9 +11,10 @@
     </head>
     <body>
       <header class="container-fluid">
-        <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand m-auto" href="/">Restaurant Reviews</a>
-        </nav>
+        <div class="heading text-center py-2">
+          <a href="/" class="d-block py-2">Restaurant Reviews</a>
+        </div>
+        
       </header>
      <main id="maincontent">
        <section id="map-container">
@@ -45,9 +46,8 @@
              </div>
            </div>
      </section>
-     <section class="container">
-       <div class="py-2">
-         <ul id="restaurants-list"></ul>
+     <section class="container-fluid">
+       <div class="row justify-content-center" id="restaurants-list">
        </div>
        
      </section>
@@ -57,7 +57,7 @@
     <script type="application/javascript" charset="utf-8" src="/js/dbhelper.js"></script>
     <script type="application/javascript" charset="utf-8" src="/js/main.js"></script>
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script> -->
-    <footer id="footer">
+    <footer id="footer" class="container-fluid px-2 py-3">
       Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
     </footer>
     <script src="./js/jquery-3.3.1.min.js"></script>
