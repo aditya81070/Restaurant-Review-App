@@ -84,10 +84,10 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   name.innerHTML = restaurant.name
 
   const address = document.getElementById('restaurant-address')
-  address.innerHTML = restaurant.address
+  address.innerHTML = '<strong>Address:- </strong>' + restaurant.address
 
   const image = document.getElementById('restaurant-img')
-  image.className = 'restaurant-img'
+  image.className = 'restaurant-img img-fluid img-thumbnail'
   image.src = DBHelper.imageUrlForRestaurant(restaurant)
 
   const cuisine = document.getElementById('restaurant-cuisine')
@@ -127,8 +127,9 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container')
   const title = document.createElement('h2')
+  title.className = 'review-heading py-2'
   title.innerHTML = 'Reviews'
-  container.appendChild(title)
+  container.insertAdjacentElement('afterbegin', title)
 
   if (!reviews) {
     const noReviews = document.createElement('p')
@@ -136,35 +137,41 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     container.appendChild(noReviews)
     return;
   }
-  const ul = document.getElementById('reviews-list')
+  const row = document.getElementById('reviews-list')
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review))
+    row.appendChild(createReviewHTML(review))
   })
-  container.appendChild(ul)
+  container.appendChild(row)
 }
 
 /**
  * Create review HTML and add it to the webpage.
  */
 createReviewHTML = (review) => {
-  const li = document.createElement('li')
-  const name = document.createElement('p')
+  const div = document.createElement('div')
+  const info = document.createElement('div')
+  info.className = 'px-1 py-2 review-info'
+  div.className = 'col-lg-4 col-md-6 col-sm-12  review mx-1 my-3'
+  const name = document.createElement('h4')
   name.innerHTML = review.name
-  li.appendChild(name)
+  name.className = 'reviewer-name pt-2 px-2'
+  info.appendChild(name)
 
-  const date = document.createElement('p')
+  const date = document.createElement('span')
   date.innerHTML = review.date
-  li.appendChild(date)
+  date.className = 'float-right date text-warning'
+  name.appendChild(date)
 
   const rating = document.createElement('p')
   rating.innerHTML = `Rating: ${review.rating}`
-  li.appendChild(rating)
+  rating.className = 'btn rating'
+  info.appendChild(rating)
 
   const comments = document.createElement('p')
   comments.innerHTML = review.comments
-  li.appendChild(comments)
-
-  return li
+  info.appendChild(comments)
+  div.appendChild(info)
+  return div
 }
 
 /**
