@@ -39,3 +39,9 @@ gulp.task('default', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts']
     server: './dist'
   })
 })
+
+gulp.task('serve', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts'], () => {
+  browserSync.init({
+    server: './dist'
+  })
+})
