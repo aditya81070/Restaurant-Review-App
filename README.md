@@ -1,6 +1,18 @@
-# Mobile Web Specialist Certification Course
----
-#### _Three Stage Course Material Project - Restaurant Reviews_
+# Front End Nanodegree
+# MWS-Restaurant app review stage-1
+
+# How to run
+* clone the repository:
+ * for https clone:
+    > $ git clone https://github.com/aditya81070/mws-restaurant-stage-1.git 
+ * for ssh clone:
+    > $ git clone git@github.com:aditya81070/mws-restaurant-stage-1.git
+* Get into directory:
+  > $ cd mws-restaurant-stage-1
+* now install dependencies:-
+  > $ npm install
+* now start the project server:
+  > $ gulp serve
 
 ## Project Overview: Stage 1
 
