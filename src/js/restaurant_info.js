@@ -153,6 +153,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
   const div = document.createElement('div')
   const info = document.createElement('div')
+  info.tabIndex = 0
   info.className = 'px-1 py-2 review-info'
   div.className = 'col-lg-4 col-md-6 col-sm-12  review mx-1 my-3'
   const name = document.createElement('h4')
