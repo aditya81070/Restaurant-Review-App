@@ -80,13 +80,13 @@ initMap = () => {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoiYWRpdHlhODEwNzAiLCJhIjoiY2ptMGJhZmdhMjRsaTNwbDg1bTFxNjh5cCJ9.1f0IbEwkns8Do3ptLiYdbg',
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attributionControl: false,
     id: 'mapbox.streets'
   }).addTo(newMap)
 
   updateRestaurants()
+  document.querySelector('.leaflet-control-attribution').remove()
+
 }
 /* window.initMap = () => {
   let loc = {
@@ -165,10 +165,12 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img')
   image.className = 'restaurant-img img-fluid img-thumbnail'
   image.src = DBHelper.imageUrlForRestaurant(restaurant)
+  image.alt = ''
   div.append(image)
 
   const name = document.createElement('h1')
   name.innerHTML = restaurant.name
+  name.tabIndex = 0
   name.className='restaurant-name'
   info.append(name)
 
@@ -196,6 +198,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap)
+    marker.tabindex= -1
     marker.on('click', onClick)
     function onClick () {
       window.location.href = marker.options.url

@@ -24,13 +24,12 @@ initMap = () => {
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1IjoiYWRpdHlhODEwNzAiLCJhIjoiY2ptMGJhZmdhMjRsaTNwbDg1bTFxNjh5cCJ9.1f0IbEwkns8Do3ptLiYdbg',
         maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-          '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        attribution: false,
         id: 'mapbox.streets'
       }).addTo(newMap)
       fillBreadcrumb()
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap)
+      document.querySelector('.leaflet-control-attribution').remove()
     }
   })
 }
