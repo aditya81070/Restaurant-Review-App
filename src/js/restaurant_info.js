@@ -67,7 +67,7 @@ fetchRestaurantFromURL = (callback) => {
       self.restaurant = restaurant
       if (!restaurant) {
         console.error(error)
-        return;
+        return
       }
       fillRestaurantHTML()
       callback(null, restaurant)
@@ -138,7 +138,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const noReviews = document.createElement('p')
     noReviews.innerHTML = 'No reviews yet!'
     container.appendChild(noReviews)
-    return;
+    return
   }
   const row = document.getElementById('reviews-list')
   reviews.forEach(review => {
@@ -192,16 +192,13 @@ fillBreadcrumb = (restaurant = self.restaurant) => {
  * Get a parameter by name from page URL.
  */
 getParameterByName = (name, url) => {
-  if (!url)
-    {url = window.location.href;}
+  if (!url) { url = window.location.href}
   name = name.replace(/[\[\]]/g, '\\$&')
-  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`)
 
     
 results = regex.exec(url)
-  if (!results)
-    {return null;}
-  if (!results[2])
-    {return '';}
+  if (!results) { return null}
+  if (!results[2]) { return ''}
   return decodeURIComponent(results[2].replace(/\+/g, ' '))
 }
