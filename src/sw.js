@@ -51,3 +51,7 @@ self.addEventListener('activate', (event) => {
         )
       }))
 })
+
+self.addEventListener('message', (event) => {
+  console.log(`message is recieved ${event.data}`)
+})
