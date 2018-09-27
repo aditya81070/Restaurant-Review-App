@@ -6,6 +6,8 @@
 * [Project Structure](#project-structure)
 * [Prerequisites](#prerequisites)
 * [How to run locally?](#how-to-run-locally)
+* [Tools](#tools)
+* [Accessibility Test](#accessibility-test)
 * [Leaflet.js and Mapbox](#leafletjs-and-mapbox)
 
 ## About
@@ -68,7 +70,15 @@ The following things are conclusions:-
     > $ npm install 
   * Run the project server:
     > $ gulp serve
+  * if you want to change anything, change in `src` folder. Then stop the server using `ctrl+c` and restart it using `$ gulp serve`.
     
+## Tools
+* *Gulp* :- Task manager for project
+* *Chrome accessibility Developer tool* : To ensure accessibility feature of project
+* *standard* plugin: To write code according to standard javascript
+
+## Accessibility Test
+Here are some audits run by chrome accessibility developer tool.
 ## Leaflet.js and Mapbox:
 
 This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information. 
