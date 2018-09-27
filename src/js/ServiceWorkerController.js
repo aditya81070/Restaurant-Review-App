@@ -33,6 +33,10 @@ ServiceWorkerController.prototype._registerServiceWorker = function () {
         const newWorker = reg.installing
         serviceWorkerController._trackInstalling(newWorker)
       })
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.location.reload()
+      })
     })
     .catch((err) => {
       console.log(`Service Worker registration failed ${err}`)
