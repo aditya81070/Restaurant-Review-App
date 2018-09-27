@@ -1,3 +1,5 @@
+let userChoice = false
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     new ServiceWorkerController()
@@ -20,11 +22,11 @@ ServiceWorkerController.prototype._registerServiceWorker = function () {
         return
       }
       if (reg.waiting) {
-        serviceWorkerController._updateReady()
+        serviceWorkerController._updateReady(reg.waiting)
         return
       }
       if (reg.installing) {
-        serviceWorkerController._trackInstalling()
+        serviceWorkerController._trackInstalling(reg.installing)
         return
       }
       reg.addEventListener('updatefound', () => {
@@ -41,11 +43,13 @@ ServiceWorkerController.prototype._trackInstalling = function _trackInstalling (
   let ServiceWorkerController = this
   worker.addEventListener('statechange', () => {
     if (worker.state === 'installed') {
-      ServiceWorkerController._updateReady()
+      ServiceWorkerController._updateReady(worker)
     }
   })
 }
 
-ServiceWorkerController.prototype._updateReady = function _updateReady () {
-  alert('there is a new update')
+ServiceWorkerController.prototype._updateReady = function _updateReady (worker) {
+  userChoice = confirm('New version available. Do you want to update?')
+  if (!userChoice) return
+  worker.postMessage('SWupdate')
 }
