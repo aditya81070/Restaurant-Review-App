@@ -134,7 +134,7 @@ nav {
 }
 
 #restaurant-container, #reviews-container {
-    box-shadow: 1px 1px 1px #ddd;
+    box-shadow: 5px 5px 4px #ccc, -5px 5px 4px #ccc;
     background-color: #fff;
 }
 #restaurant-name {
