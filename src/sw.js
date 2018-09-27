@@ -36,3 +36,13 @@ self.addEventListener('fetch', (event) => {
       return new Response('You seems completely offline')
     }))
 })
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(caches.keys()
+    .then((cacheNames) => {
+      return Promise.all(
+        cacheNames.filter(cacheName => cacheName.startsWith('mws-') && cacheName !== staticCacheName)
+          .map(cacheName => caches.delete(cacheName))
+      )
+    }))
+})
