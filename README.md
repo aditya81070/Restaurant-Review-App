@@ -1,5 +1,13 @@
 # MWS Restaurant App Stage-1
 
+## Table of Content
+* [About](#about)
+* [What I learned?](#what-i-learned)
+* [Project Structure](#project-structure)
+* [Prerequisites](#prerequisites)
+* [How to run locally?](#how-to-run-locally)
+* [Leaflet.js and Mapbox](#leafletjs-and-mapbox)
+
 ## About
 
 This is a restaurant review app. It shows the restaurant details on landing page and their location on map. It is part of Udacity Front End Nanodegree and project for part 4 of nanodegree.
@@ -64,10 +72,6 @@ The following things are conclusions:-
 ## Leaflet.js and Mapbox:
 
 This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information. 
-
-### Note about ES6
-
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
 
 
 
