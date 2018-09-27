@@ -28,7 +28,8 @@ ServiceWorkerController.prototype._registerServiceWorker = function () {
         return
       }
       reg.addEventListener('updatefound', () => {
-        serviceWorkerController._trackInstalling(reg.installing)
+        const newWorker = reg.installing
+        serviceWorkerController._trackInstalling(newWorker)
       })
     })
     .catch((err) => {
