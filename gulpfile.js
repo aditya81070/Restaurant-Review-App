@@ -21,17 +21,22 @@ gulp.task('scripts', () => {
   gulp.src('./src/js/**/*.js')
     .pipe(gulp.dest('./dist/js'))
 })
+gulp.task('copy-sw', () => {
+  gulp.src('./src/sw.js')
+    .pipe(gulp.dest('./dist'))
+})
 
 gulp.task('copy-data', () => {
   gulp.src('./src/data/**/*')
     .pipe(gulp.dest('./dist/data'))
 })
-gulp.task('default', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts'], () => {
+gulp.task('default', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts', 'copy-sw'], () => {
   gulp.watch('./src/*.html', ['copy-html'])
   gulp.watch('./dist/*.html').on('change', browserSync.reload)
   gulp.watch('./src/**/*.js', [ 'scripts' ])
-  gulp.watch('./dist/js/**/*.js').on('change', browserSync.reload)
+  // gulp.watch('./dist/js/**/*.js').on('change', browserSync.reload)
   gulp.watch('./src/css/**/*.css', ['styles'])
+  gulp.watch('./src/sw.js', ['copy-sw'])
   gulp.watch('./dist/css/**/*.css').on('change', browserSync.reload)
   gulp.watch('./src/img/*', ['copy-img'])
 
@@ -40,7 +45,7 @@ gulp.task('default', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts']
   })
 })
 
-gulp.task('serve', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts'], () => {
+gulp.task('serve', ['copy-html', 'copy-img', 'copy-data', 'styles', 'scripts', 'copy-sw'], () => {
   browserSync.init({
     server: './dist'
   })
